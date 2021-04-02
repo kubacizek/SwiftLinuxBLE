@@ -18,7 +18,6 @@ extension Peripheral {
         let encoder = GAPDataEncoder()
         let data = try encoder.encodeAdvertisingData(name, serviceUUIDs)
         try peripheral.controller.setLowEnergyScanResponse(data, timeout: .default)
-        print("BLE Advertising started")
         
         // Setup iBeacon
         if let iBeacon = iBeacon {
@@ -43,11 +42,8 @@ extension Peripheral {
         for var characteristic in characteristics {
             guard let handle = peripheral.characteristics(for: characteristic.uuid).last else { continue }
             
-            print("Characteristic \(characteristic.uuid) with permissions \(characteristic.permissions) and \(characteristic.descriptors.count) descriptors")
-            
             // Register as observer for each characteristic
             characteristic.didSet { [weak self] in
-                NSLog("MyPeripheral: characteristic \(characteristic.uuid) did change with new value \($0)")
                 self?.peripheral[characteristic: handle] = $0
             }
           
