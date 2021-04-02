@@ -5,36 +5,27 @@
         "package": "Bluetooth",
         "repositoryURL": "https://github.com/PureSwift/Bluetooth.git",
         "state": {
-          "branch": "master",
-          "revision": "b03524c7a0c7eca048133a9df9dc4bbe727b38e0",
-          "version": null
+          "branch": null,
+          "revision": "c3beb316c08daf39d4a95b2d14ec0305ec3858a3",
+          "version": "4.2.1"
         }
       },
       {
         "package": "BluetoothLinux",
         "repositoryURL": "https://github.com/PureSwift/BluetoothLinux",
         "state": {
-          "branch": "master",
-          "revision": "52078ccc6928c8f3e7712bbda052f4a927a2e5ad",
-          "version": null
-        }
-      },
-      {
-        "package": "CRuntime",
-        "repositoryURL": "https://github.com/wickwirew/CRuntime.git",
-        "state": {
           "branch": null,
-          "revision": "95f911318d8c885f6fc05e971471f94adfd39405",
-          "version": "2.1.2"
+          "revision": "d3416b0385dabed4fd76f9dfb718b40a6eb84bb9",
+          "version": "4.2.0"
         }
       },
       {
         "package": "GATT",
         "repositoryURL": "https://github.com/PureSwift/GATT",
         "state": {
-          "branch": "master",
-          "revision": "955a19b2030e08666154f2ee52d7955f56bb6ff5",
-          "version": null
+          "branch": null,
+          "revision": "a04cc0954ee1c894c7154aa964efc1659c4f592c",
+          "version": "2.4.0"
         }
       },
       {
@@ -42,8 +33,8 @@
         "repositoryURL": "https://github.com/wickwirew/Runtime.git",
         "state": {
           "branch": null,
-          "revision": "c167476b07fe8cc65fdf064076a4081c3269d14a",
-          "version": "2.1.0"
+          "revision": "a848b81e1a0100801f572e5273ffe4352fd54088",
+          "version": "2.2.2"
         }
       }
     ]

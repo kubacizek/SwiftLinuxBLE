@@ -12,7 +12,7 @@ public protocol Peripheral : class {
 
 @available(OSX 10.12, *)
 extension Peripheral {
-    public func advertise(name: GAPCompleteLocalName, services: [Service], iBeaconUUID: UUID? = nil) throws {
+    public func advertise(name: GAPCompleteLocalName, services: [Service], iBeacon: AppleBeacon? = nil) throws {
         // Advertise services and peripheral name
         let serviceUUIDs = GAPIncompleteListOf128BitServiceClassUUIDs(uuids: services.map { UUID(bluetooth: $0.uuid) })
         let encoder = GAPDataEncoder()
@@ -21,11 +21,9 @@ extension Peripheral {
         print("BLE Advertising started")
         
         // Setup iBeacon
-        if let iBeaconUUID = iBeaconUUID {
-            let rssi: Int8 = 30
-            let beacon = AppleBeacon(uuid: iBeaconUUID, rssi: rssi)
+        if let iBeacon = iBeacon {
             let flags: GAPFlags = [.lowEnergyGeneralDiscoverableMode, .notSupportedBREDR]
-            try peripheral.controller.iBeacon(beacon, flags: flags, interval: .min, timeout: .default)
+            try peripheral.controller.iBeacon(iBeacon, flags: flags, interval: .min, timeout: .default)
         }
     }
     public func add(service: Service) throws {
