@@ -13,7 +13,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/PureSwift/GATT", .branch("master")),
-        .package(url: "https://github.com/blocks-lockers/BluetoothLinux", .branch("master")),
+        .package(url: "https://github.com/PureSwift/BluetoothLinux", .branch("master")),
         .package(url: "https://github.com/wickwirew/Runtime", .upToNextMajor(from: "2.1.0"))
     ],
     targets: [
