@@ -6,9 +6,9 @@ import BluetoothLinux
 
 public protocol CharacteristicType {
     var uuid: BluetoothUUID { get }
-    var properties: BitMaskOptionSet<GATT.Characteristic.Property> { get }
-    var permissions: BitMaskOptionSet<GATT.Permission> { get }
-    var descriptors: [GATT.Characteristic.Descriptor] { get }
+    var properties: BitMaskOptionSet<BluetoothGATT.GATTAttribute.Characteristic.Property> { get }
+    var permissions: BitMaskOptionSet<BluetoothGATT.GATTAttribute.Characteristic.Permission> { get }
+    var descriptors: [BluetoothGATT.GATTAttribute.Descriptor] { get }
     
     var data: Data { get set }
     //var didSet: (Data) -> Void { get set }
@@ -20,9 +20,9 @@ public protocol CharacteristicType {
 public class Characteristic<Value: DataConvertible> : CharacteristicType {
     var value: Value
     public let uuid: BluetoothUUID
-    public var properties: BitMaskOptionSet<GATT.Characteristic.Property> = [.read, .write]
-    public var permissions: BitMaskOptionSet<GATT.Permission> = [.read, .write]
-    public let descriptors: [GATT.Characteristic.Descriptor]
+    public var properties: BitMaskOptionSet<BluetoothGATT.GATTAttribute.Characteristic.Property> = [.read, .write]
+    public var permissions: BitMaskOptionSet<BluetoothGATT.GATTAttribute.Characteristic.Permission> = [.read, .write]
+    public let descriptors: [BluetoothGATT.GATTAttribute.Descriptor]
     
     /*
      // Default arguments cause segfault in swift 5.1
@@ -35,7 +35,7 @@ public class Characteristic<Value: DataConvertible> : CharacteristicType {
         self.descriptors = descriptors ?? (properties.contains(.notify) ? [GATTClientCharacteristicConfiguration().descriptor] : [])
     }*/
     
-    public init(wrappedValue value: Value, uuid: BluetoothUUID, _ properties: BitMaskOptionSet<GATT.Characteristic.Property>) {
+    public init(wrappedValue value: Value, uuid: BluetoothUUID, _ properties: BitMaskOptionSet<BluetoothGATT.GATTAttribute.Characteristic.Property>) {
         self.value = value
         self.uuid = uuid
         self.properties = properties
@@ -72,14 +72,14 @@ public class Characteristic<Value: DataConvertible> : CharacteristicType {
 }
 
 
-extension BitMaskOptionSet where Element == GATT.Characteristic.Property {
-    var inferredPermissions: BitMaskOptionSet<GATT.Permission> {
+extension BitMaskOptionSet where Element == BluetoothGATT.GATTAttribute.Characteristic.Property {
+    var inferredPermissions: BitMaskOptionSet<BluetoothGATT.GATTAttribute.Characteristic.Permission> {
         let mapping: [GATT.Characteristic.Property: ATTAttributePermission] = [
             .read: .read,
             .notify: .read,
             .write: .write
         ]
-        var permissions = BitMaskOptionSet<GATT.Permission>()
+        var permissions = BitMaskOptionSet<BluetoothGATT.GATTAttribute.Characteristic.Permission>()
         for (property, permission) in mapping {
             if contains(property) {
                 permissions.insert(permission)

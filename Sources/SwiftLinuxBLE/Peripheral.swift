@@ -32,10 +32,10 @@ extension Peripheral {
         }
         
         let gattCharacteristics = characteristics.map {
-            GATT.Characteristic(uuid: $0.uuid, value: $0.data, permissions: $0.permissions, properties: $0.properties, descriptors: $0.descriptors)
+            BluetoothGATT.GATTAttribute.Characteristic(uuid: $0.uuid, value: $0.data, permissions: $0.permissions, properties: $0.properties, descriptors: $0.descriptors)
         }
         
-        let gattService = GATT.Service(uuid: service.uuid, primary: true, characteristics: gattCharacteristics)
+        let gattService = BluetoothGATT.GATTAttribute.Service(uuid: service.uuid, primary: true, characteristics: gattCharacteristics)
         let _ = try peripheral.add(service: gattService)
         
         
