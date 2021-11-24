@@ -21,10 +21,10 @@
       },
       {
         "package": "GATT",
-        "repositoryURL": "https://github.com/PureSwift/GATT",
+        "repositoryURL": "https://github.com/blocks-lockers/GATT",
         "state": {
           "branch": "master",
-          "revision": "c3bbda8000e3b82486ca9a353725d1bfbc7701e8",
+          "revision": "51a10bb5e758bf2723bd49251c57fe5e7ea9a2df",
           "version": null
         }
       },
